@@ -1,0 +1,53 @@
+1)create tables
+CREATE TABLE TEACHER(
+TeacreId INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+TeacherName NVARCHAR(50),
+TeacherLastName NVARCHAR(50),
+TeacherGender NVARCHAR(50),
+TSubject NVARCHAR(50),
+PupilID INT 
+
+);
+
+INSERT INTO TEACHER(TeacherName,TeacherLastName,TeacherGender,TSubject,PupilID)
+VALUES('paata','gvichia','male','math',1)
+INSERT INTO TEACHER(TeacherName,TeacherLastName,TeacherGender,TSubject,PupilID)
+VALUES('giorgi','nadiradze','male','rus',2)
+INSERT INTO TEACHER(TeacherName,TeacherLastName,TeacherGender,TSubject,PupilID)
+VALUES('gio','pandemidze','male','geo',3)
+INSERT INTO TEACHER(TeacherName,TeacherLastName,TeacherGender,TSubject,PupilID)
+VALUES('giorgi','panchulidze','male','geo',4)
+INSERT INTO TEACHER(TeacherName,TeacherLastName,TeacherGender,TSubject,PupilID)
+VALUES('me','mechi','male','geo',5)
+INSERT INTO TEACHER(TeacherName,TeacherLastName,TeacherGender,TSubject,PupilID)
+VALUES('she','shechi','female','geo',5)
+
+CREATE TABLE pupils(
+PupilsId INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+PupilsName NVARCHAR(50),
+PupilsLastName NVARCHAR(50),
+PupilsGender NVARCHAR(50),
+Class NVARCHAR(50),
+TeacherID INT 
+);
+
+
+INSERT INTO pupils(PupilsName,PupilsLastName,PupilsGender,Class,TeacherID)
+VALUES('dali','gvichia','female','9',1)
+INSERT INTO pupils(PupilsName,PupilsLastName,PupilsGender,Class,TeacherID)
+VALUES('rezo','abuladZe','male','10',2)
+INSERT INTO pupils(PupilsName,PupilsLastName,PupilsGender,Class,TeacherID)
+VALUES('nino','kokaia','female','11',3)
+INSERT INTO pupils(PupilsName,PupilsLastName,PupilsGender,Class,TeacherID)
+VALUES('giorgi','xvichia','male','11',5)
+INSERT INTO pupils(PupilsName,PupilsLastName,PupilsGender,Class,TeacherID)
+VALUES('giorgi','leqsoia','male','12',5)
+INSERT INTO pupils(PupilsName,PupilsLastName,PupilsGender,Class,TeacherID)
+VALUES('giorgi','kokaia','female','11',3)
+
+2)
+
+SELECT TEACHER.TeacreId,TEACHER.TeacherName,pupils.PupilsName,pupils.PupilsLastName
+FROM  TEACHER
+INNER JOIN pupils ON TEACHER.TeacreId=pupils.TeacherID
+WHERE pupils.PupilsName='giorgi'
